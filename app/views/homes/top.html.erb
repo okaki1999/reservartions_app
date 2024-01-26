@@ -1,0 +1,18 @@
+<h1>aaaa</h1>
+<%= link_to "ログアウトa", destroy_user_session_path, method: :delete %>
+
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-12 text-center">
+      <h1>予約画面</h1>
+      <p>3ヶ月先まで予約することができます。</p>
+    </div>
+    <div class="col-12 mt-3">
+      <%= week_calendar events: @reservations.to_a do |date, reservations| %>
+        <%= date.day %>
+      <% end %>
+    </div>
+  </div>
+</div>
