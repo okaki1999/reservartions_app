@@ -6,6 +6,13 @@ class ApplicationController < ActionController::Base
   
     # deviseコントローラーにストロングパラメータを追加する          
     before_action :configure_permitted_parameters, if: :devise_controller?
+
+    def check_reservation(existing_reservations, day, time)
+        # 既存の予約から指定された日時の予約を探す
+        existing_reservations.any? do |reservation|
+          reservation.day == day && reservation.time == time
+        end
+    end
   
     protected
     def configure_permitted_parameters
