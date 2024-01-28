@@ -40,6 +40,7 @@ class ReservationsController < ApplicationController
         params.require(:reservation).permit(:day, :time, :other_attributes)
       end
       
+      
       def reservation_params_with_start_time
         reservation_params = params.require(:reservation).permit(:day, :time)
         day = reservation_params[:day]
