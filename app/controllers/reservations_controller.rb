@@ -6,8 +6,8 @@ class ReservationsController < ApplicationController
     
       def new
         @reservation = Reservation.new
-        @day = params[:day]
-        @time = params[:time]
+        @day = params[:day] || Date.today
+        @time = params[:time] || "12:00" 
         @start_time = DateTime.parse("#{@day} #{@time} JST")
 
       end
@@ -39,7 +39,7 @@ class ReservationsController < ApplicationController
       def reservation_params
         params.require(:reservation).permit(:day, :time, :other_attributes)
       end
-      
+
       
       def reservation_params_with_start_time
         reservation_params = params.require(:reservation).permit(:day, :time)

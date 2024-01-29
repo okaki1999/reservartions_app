@@ -7,16 +7,24 @@
     <div class="col-12 mt-3 content">
       <%= form_with model: @reservation, local: true, class: 'form', url: reservations_path, method: :post do |form| %>
         <%= render 'layouts/error_messages', object: @reservation %>
+        
+        <%= form_for @reservation do |form| %>
 
         <div class="day form-group">
-          <%= form.label :day, '日付' %>
-          <%= form.date_field :day, class: 'form-control' %>
+            <%= form.label :day, '日付' %>
+            <%= form.date_field :day, class: 'form-control', value: @day %>
         </div>
 
         <div class="time form-group">
-          <%= form.label :time, '時間' %>
-          <%= form.time_field :time, class: 'form-control' %>
+        <%= form.label :time, '時間' %>
+        <%= select_tag 'reservation[time]', options_for_select([
+            ["10:00", "10:00"], ["10:30", "10:30"], ["11:00", "11:00"], ["11:30", "11:30"],
+            ["12:00", "12:00"], ["12:30", "12:30"], ["13:00", "13:00"], ["13:30", "13:30"],
+            ["14:00", "14:00"], ["14:30", "14:30"], ["15:00", "15:00"], ["15:30", "15:30"],
+            ["16:00", "16:00"], ["16:30", "16:30"], ["17:00", "17:00"]
+        ], @time), class: 'form-control' %>
         </div>
+
 
         <%= form.hidden_field :user_id, value: current_user.id %>
         <%= form.hidden_field :start_time, value: @start_time %>
@@ -24,10 +32,12 @@
         <div class="submit">
           <%= form.submit value: '予約する', class: 'btn btn-primary mx-auto d-block' %>
         </div>
+        <% end %>
       <% end %>
 
       <div class="col-12 text-right">
-        <%= link_to '戻る', reservations_path %>
+        <%= link_to '予約一覧', reservations_path %>
+        <%= link_to "ホーム", root_path %>
       </div>
     </div>
   </div>
