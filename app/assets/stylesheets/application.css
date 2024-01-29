@@ -14,4 +14,35 @@
  *= require_tree .
  *= require_self
  */
+
+ .text-center{
+    text-align: center;
+ }
+ 
+ .mt-3{
+    margin: 50px;
+ }
+  
+ .simple-calendar table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  .simple-calendar th, .simple-calendar td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+  }
+
+  .simple-calendar .table th, .simple-calendar .table td {
+    width: calc(100% / 8); /* 8列に均等分割 */
+  }
+
+  .odd-row {
+    background-color: #fff; /* 白 */
+  }
+  
+  .even-row {
+    background-color: #f2f2f2; /* 灰色 */
+  }
   

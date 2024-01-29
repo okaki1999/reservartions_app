@@ -1,9 +1,14 @@
-<h1>ユーザー一覧</h1>
+<h1>予約一覧</h1>
+
 <% @reservations&.each do |reservations| %>
-<h3>ユーザー名</h3>
+<div>
+<h3>予約日</h3>
 <%= reservations.day %>
-<h3>メールアドレス</h3>
+<h3>予約時間</h3>
 <%= reservations.time %>
-<h3>プロフィール</h3>
+<h3>確認</h3>
 <%= reservations.start_time%>
+</div>
 <% end %>
+
+<%= link_to "ホーム", root_path %>
